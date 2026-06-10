@@ -13,7 +13,7 @@ export default function MainMenu({ onStartGame }: MainMenuProps) {
     <div className="relative w-full h-screen bg-[#0A0A10] overflow-hidden font-body-md select-none flex items-center justify-center">
       {/* Blurred Full-Screen Background - Replaces black bars with a beautiful ambient glow */}
       <img 
-        src="/main-menu-bg.png" 
+        src="/image copy.png" 
         className="absolute inset-0 w-full h-full object-cover blur-[40px] opacity-60 scale-110 pointer-events-none" 
         alt=""
       />
@@ -23,7 +23,7 @@ export default function MainMenu({ onStartGame }: MainMenuProps) {
         
         {/* Background Image - object-cover inside a 16:9 box guarantees it shows fully without distortion or cropping */}
         <img 
-          src="/main-menu-bg.png" 
+          src="/image copy.png" 
           alt="Main Menu Background" 
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
@@ -46,11 +46,11 @@ export default function MainMenu({ onStartGame }: MainMenuProps) {
             <div className="flex flex-col items-center mt-2 group cursor-default"></div>
 
             {/* Post-it Note Right */}
-            <div className="bg-[#FDF8E2] text-amber-950 p-4 rounded-sm shadow-lg rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300 w-56 border border-[#D4C3A3] relative hidden lg:block origin-top-right">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-black/15 rounded-full blur-[2px]"></div>
-              <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-2.5 h-2.5 bg-red-600 rounded-full shadow-sm border border-red-800"></div>
-              <p className="font-bold mb-1.5 text-[13px] leading-snug">10 pays t'attendent !<br/>10 missions pour la planète.</p>
-              <p className="text-[10px] italic text-amber-900/80">Chaque mission t'aide à protéger la planète de manière ludique.</p>
+            <div className="bg-[#FDF8E2] text-amber-950 p-5 rounded-sm shadow-lg rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300 w-72 border border-[#D4C3A3] relative hidden lg:block origin-top-right">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-7 h-7 bg-black/15 rounded-full blur-[2px]"></div>
+              <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 bg-red-600 rounded-full shadow-sm border border-red-800"></div>
+              <p className="font-extrabold mb-2 text-[17px] leading-snug">10 pays t'attendent !<br/>10 missions pour la planète.</p>
+              <p className="text-[12px] italic text-amber-900/80 font-medium">Chaque mission t'aide à protéger la planète de manière ludique.</p>
             </div>
           </div>
 
@@ -65,7 +65,7 @@ export default function MainMenu({ onStartGame }: MainMenuProps) {
           <div className="flex justify-between items-end gap-6 relative z-10">
             
             {/* Left: AI Companion & Profile */}
-            <div className="flex flex-col gap-4 w-[320px] scale-95 origin-bottom-left">
+            <div className="flex flex-col gap-4 w-[340px] scale-100 origin-bottom-left translate-x-8 md:translate-x-16 lg:translate-x-24">
               {/* Dialogue Box */}
               <div className="bg-[#FDF6E3]/95 backdrop-blur-md rounded-2xl border border-[#D4C3A3] shadow-xl relative p-5 mt-16 group">
                 <div className="absolute -top-4 left-5 bg-[#0B3D91] text-[#F4B400] px-4 py-1 rounded-lg border border-[#F4B400] font-extrabold shadow-md flex items-center gap-1.5 text-xs tracking-widest">
@@ -94,25 +94,33 @@ export default function MainMenu({ onStartGame }: MainMenuProps) {
             </div>
 
             {/* Center: Commencer Le Voyage + Settings Bar */}
-            <div className="flex flex-col items-center gap-5 scale-95 origin-bottom">
+            <div className="absolute left-1/2 bottom-[18%] -translate-x-1/2 flex flex-col items-center gap-6 scale-105 origin-bottom">
               
               {/* COMMENCER LE VOYAGE Button */}
               <button 
                 onClick={onStartGame}
-                className="group relative bg-[#0B3D91]/90 backdrop-blur-md border-2 border-[#F4B400] rounded-full px-10 py-4 shadow-[0_0_25px_rgba(11,61,145,0.5),inset_0_0_15px_rgba(244,180,0,0.2)] transition-all hover:scale-110 hover:shadow-[0_0_40px_rgba(244,180,0,0.4)] active:scale-95 cursor-pointer overflow-hidden flex items-center gap-4"
+                className="group relative bg-gradient-to-b from-[#114ba3] to-[#0a3175] border-2 border-[#F4B400] rounded-full pr-10 pl-4 py-3.5 shadow-[0_10px_30px_rgba(11,61,145,0.6),inset_0_0_20px_rgba(244,180,0,0.3)] transition-all hover:scale-105 hover:shadow-[0_15px_40px_rgba(244,180,0,0.5)] active:scale-95 cursor-pointer overflow-hidden flex items-center gap-5"
               >
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.2),transparent_50%)]"></div>
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-white/10 transition-opacity duration-300"></div>
-                <Compass className="w-10 h-10 text-[#F4B400] group-hover:rotate-[360deg] transition-transform duration-1000 ease-in-out filter drop-shadow-[0_0_8px_rgba(244,180,0,0.6)]" />
+                
+                {/* Premium Compass Badge */}
+                <div className="relative flex items-center justify-center w-14 h-14 bg-gradient-to-br from-[#FFD700] to-[#D49000] rounded-full shadow-[0_0_20px_rgba(244,180,0,0.8)] ring-4 ring-[#0B3D91]/50 group-hover:rotate-[360deg] transition-transform duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-10">
+                  <div className="absolute inset-0.5 rounded-full border border-white/50"></div>
+                  <Compass className="w-8 h-8 text-[#0B3D91] drop-shadow-sm stroke-[2.5]" />
+                  {/* Glowing core */}
+                  <div className="absolute w-2 h-2 bg-white rounded-full blur-[2px]"></div>
+                </div>
+
                 <div className="text-left relative z-10">
-                  <span className="block font-headline-lg text-2xl font-black text-white tracking-widest drop-shadow-md">
+                  <span className="block font-headline-lg text-2xl font-black text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
                     COMMENCER LE VOYAGE
                   </span>
                 </div>
               </button>
 
               {/* Settings Bar */}
-              <div className="bg-[#FDF6E3]/95 backdrop-blur-md rounded-3xl border border-[#D4C3A3] p-4 flex gap-6 shadow-xl items-center relative z-10">
+              <div className="bg-[#FDF6E3]/95 backdrop-blur-md rounded-full border border-[#D4C3A3] px-8 py-3 flex gap-8 shadow-2xl items-center relative z-10">
                 
                 <div className="flex flex-col items-center gap-1.5">
                   <span className="text-[9px] text-[#4A3B2C] font-black tracking-widest">LANGUE</span>
@@ -145,34 +153,34 @@ export default function MainMenu({ onStartGame }: MainMenuProps) {
             </div>
 
             {/* Right: Vertical Menu */}
-            <div className="flex flex-col gap-2.5 w-[240px] scale-95 origin-bottom-right">
-              <button className="bg-[#FDF6E3]/95 backdrop-blur-md hover:bg-white text-[#0B3D91] rounded-2xl p-3 shadow-lg border border-[#D4C3A3] hover:border-[#F4B400] flex items-center gap-3 transition-all cursor-pointer group hover:-translate-y-1">
-                 <div className="bg-[#0B3D91] text-[#F4B400] p-1.5 rounded-lg shadow-inner group-hover:scale-110 transition-transform">
-                    <Globe className="w-4 h-4" />
+            <div className="flex flex-col gap-3 w-[260px] scale-100 origin-bottom-right -translate-x-4 md:-translate-x-8">
+              <button className="bg-[#FDF6E3]/95 backdrop-blur-md hover:bg-white text-[#0B3D91] rounded-2xl p-4 shadow-lg border border-[#D4C3A3] hover:border-[#F4B400] flex items-center gap-3.5 transition-all cursor-pointer group hover:-translate-y-1">
+                 <div className="bg-[#0B3D91] text-[#F4B400] p-2 rounded-xl shadow-inner group-hover:scale-110 transition-transform">
+                    <Globe className="w-5 h-5" />
                  </div>
-                 <span className="font-black tracking-wider text-xs">CARTE DU MONDE</span>
+                 <span className="font-black tracking-wider text-[13px]">CARTE DU MONDE</span>
               </button>
-              <button className="bg-[#FDF6E3]/95 backdrop-blur-md hover:bg-white text-[#0B3D91] rounded-2xl p-3 shadow-lg border border-[#D4C3A3] hover:border-[#22C55E] flex items-center gap-3 transition-all cursor-pointer group hover:-translate-y-1">
-                 <div className="bg-[#22C55E] text-white p-1.5 rounded-lg shadow-inner group-hover:scale-110 transition-transform">
-                    <Book className="w-4 h-4" />
+              <button className="bg-[#FDF6E3]/95 backdrop-blur-md hover:bg-white text-[#0B3D91] rounded-2xl p-4 shadow-lg border border-[#D4C3A3] hover:border-[#22C55E] flex items-center gap-3.5 transition-all cursor-pointer group hover:-translate-y-1">
+                 <div className="bg-[#22C55E] text-white p-2 rounded-xl shadow-inner group-hover:scale-110 transition-transform">
+                    <Book className="w-5 h-5" />
                  </div>
-                 <span className="font-black tracking-wider text-xs">MON PASSEPORT</span>
+                 <span className="font-black tracking-wider text-[13px]">MON PASSEPORT</span>
               </button>
-              <button className="bg-[#FDF6E3]/95 backdrop-blur-md hover:bg-white text-[#0B3D91] rounded-2xl p-3 shadow-lg border border-[#D4C3A3] hover:border-[#F4B400] flex items-center gap-3 transition-all cursor-pointer group hover:-translate-y-1">
-                 <div className="bg-[#F4B400] text-white p-1.5 rounded-lg shadow-inner group-hover:scale-110 transition-transform">
-                    <Settings className="w-4 h-4" />
+              <button className="bg-[#FDF6E3]/95 backdrop-blur-md hover:bg-white text-[#0B3D91] rounded-2xl p-4 shadow-lg border border-[#D4C3A3] hover:border-[#F4B400] flex items-center gap-3.5 transition-all cursor-pointer group hover:-translate-y-1">
+                 <div className="bg-[#F4B400] text-white p-2 rounded-xl shadow-inner group-hover:scale-110 transition-transform">
+                    <Settings className="w-5 h-5" />
                  </div>
-                 <span className="font-black tracking-wider text-xs">PARAMÈTRES</span>
+                 <span className="font-black tracking-wider text-[13px]">PARAMÈTRES</span>
               </button>
-              <button className="bg-[#FDF6E3]/95 backdrop-blur-md hover:bg-white text-[#0B3D91] rounded-2xl p-3 shadow-lg border border-[#D4C3A3] hover:border-purple-500 flex items-center gap-3 transition-all cursor-pointer group hover:-translate-y-1">
-                 <div className="bg-purple-500 text-white p-1.5 rounded-lg shadow-inner group-hover:scale-110 transition-transform">
-                    <Info className="w-4 h-4" />
+              <button className="bg-[#FDF6E3]/95 backdrop-blur-md hover:bg-white text-[#0B3D91] rounded-2xl p-4 shadow-lg border border-[#D4C3A3] hover:border-purple-500 flex items-center gap-3.5 transition-all cursor-pointer group hover:-translate-y-1">
+                 <div className="bg-purple-500 text-white p-2 rounded-xl shadow-inner group-hover:scale-110 transition-transform">
+                    <Info className="w-5 h-5" />
                  </div>
-                 <span className="font-black tracking-wider text-xs">À PROPOS</span>
+                 <span className="font-black tracking-wider text-[13px]">À PROPOS</span>
               </button>
               
-              <button className="mt-2 bg-[#4A3B2C]/90 hover:bg-red-600 text-white border border-transparent rounded-2xl p-3 shadow-lg flex items-center justify-center gap-2 transition-colors cursor-pointer font-black tracking-widest hover:-translate-y-1">
-                 <LogOut className="w-4 h-4" /> QUITTER
+              <button className="mt-2 bg-[#4A3B2C]/90 hover:bg-red-600 text-white border border-transparent rounded-2xl p-4 shadow-lg flex items-center justify-center gap-2 transition-colors cursor-pointer font-black tracking-widest hover:-translate-y-1 text-[13px]">
+                 <LogOut className="w-5 h-5" /> QUITTER
               </button>
             </div>
 

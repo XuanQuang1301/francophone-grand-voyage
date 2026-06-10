@@ -208,16 +208,12 @@ export default function CharacterCreator({ onComplete }: CharacterCreatorProps) 
                       key={av.id}
                       type="button"
                       onClick={() => { setSelectedAvatar(av.url); setSelectedAvatarId(av.id); }}
-                      className={`relative rounded-xl overflow-hidden border-2 transition-all text-left flex flex-col hover:shadow-md ${
-                        selectedAvatar === av.url ? "border-[#F4B400] ring-4 ring-[#F4B400]/20 bg-[#F4B400]/5" : "border-[#D4C3A3] bg-white hover:border-[#0B3D91]/50"
+                      className={`relative rounded-xl overflow-hidden border-2 transition-all hover:shadow-md ${
+                        selectedAvatar === av.url ? "border-[#F4B400] ring-4 ring-[#F4B400]/20" : "border-transparent opacity-80 hover:opacity-100 hover:border-[#0B3D91]/50"
                       }`}
                     >
-                      <div className="w-full aspect-[4/5] overflow-hidden border-b border-[#D4C3A3]/50 bg-slate-100">
+                      <div className="w-full aspect-[4/5] bg-slate-100">
                         <img src={av.url} alt={av.name} className="w-full h-full object-cover object-top" />
-                      </div>
-                      <div className="p-3">
-                        <h4 className="font-bold text-[#0B3D91] text-sm">{av.name}</h4>
-                        <p className="text-[10px] text-[#4A3B2C]/80 leading-relaxed mt-1 font-medium">{av.desc}</p>
                       </div>
                     </button>
                   ))}
