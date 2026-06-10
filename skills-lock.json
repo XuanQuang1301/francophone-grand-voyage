@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "skills": {
+    "ask": {
+      "source": "buiducnhat/cobrew",
+      "sourceType": "github",
+      "skillPath": "plugins/cobrew/skills/ask/SKILL.md",
+      "computedHash": "376603fc8f0816c7d7acd7fee7fef40f34c04d13a460bf06072041d9a1384566"
+    },
+    "brainstorm": {
+      "source": "buiducnhat/cobrew",
+      "sourceType": "github",
+      "skillPath": "plugins/cobrew/skills/brainstorm/SKILL.md",
+      "computedHash": "d01e42752c22524c1bbaf51550295dd5b147f872ac23b96b5dbeea69632f978d"
+    },
+    "docs": {
+      "source": "buiducnhat/cobrew",
+      "sourceType": "github",
+      "skillPath": "plugins/cobrew/skills/docs/SKILL.md",
+      "computedHash": "0c096cb56a97c3a58b830a74459908ac0d327ce938b0f087020d2a15e8a3b7d2"
+    },
+    "execute-plan": {
+      "source": "buiducnhat/cobrew",
+      "sourceType": "github",
+      "skillPath": "plugins/cobrew/skills/execute-plan/SKILL.md",
+      "computedHash": "772778f5ac8019dcf5712f63544153e784f7b0487faf80786458bc86be8abc95"
+    },
+    "fix": {
+      "source": "buiducnhat/cobrew",
+      "sourceType": "github",
+      "skillPath": "plugins/cobrew/skills/fix/SKILL.md",
+      "computedHash": "95596319d8ad3320e4cfffa18f09a3e6cc2c086b6d41717e71348ded001d74e6"
+    },
+    "git-commit": {
+      "source": "buiducnhat/cobrew",
+      "sourceType": "github",
+      "skillPath": "plugins/cobrew/skills/git-commit/SKILL.md",
+      "computedHash": "3190b70390494e4dd26e9e6cb0bfdd2715092accbc50b969cc0bcac3f0a34309"
+    },
+    "quick-implement": {
+      "source": "buiducnhat/cobrew",
+      "sourceType": "github",
+      "skillPath": "plugins/cobrew/skills/quick-implement/SKILL.md",
+      "computedHash": "2831e63de145b0d7bf30cef51518c890e2cc70359191a3098b803ecca9253ff9"
+    },
+    "review": {
+      "source": "buiducnhat/cobrew",
+      "sourceType": "github",
+      "skillPath": "plugins/cobrew/skills/review/SKILL.md",
+      "computedHash": "2f83a146e4bbf04f5612eabcac0c67cfc623cba09de04add2627ba082a64cc60"
+    },
+    "visualize": {
+      "source": "buiducnhat/cobrew",
+      "sourceType": "github",
+      "skillPath": "plugins/cobrew/skills/visualize/SKILL.md",
+      "computedHash": "ac8dd30fd6e121c6bf0f89dbcb3dd4d42d55875b845d25d150c4e93aceff5c8a"
+    },
+    "write-plan": {
+      "source": "buiducnhat/cobrew",
+      "sourceType": "github",
+      "skillPath": "plugins/cobrew/skills/write-plan/SKILL.md",
+      "computedHash": "ec2219555d006c26873ed61ccd15f29ea1380fbebfafda6b7d0ab5bd02580a75"
+    }
+  }
+}

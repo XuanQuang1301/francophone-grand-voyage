@@ -1,0 +1,6 @@
+{
+  "name": "Francophone Grand Voyage",
+  "description": "An interactive educational adventure game exploring OIF countries with mini-games, French audio speech learning, and AI-driven cultural guides.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
