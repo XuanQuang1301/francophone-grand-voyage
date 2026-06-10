@@ -9,14 +9,14 @@ interface CharacterCreatorProps {
 const PRESET_AVATARS = [
   {
     id: "lucas",
-    name: "Lucas (Nam - 16 tuổi)",
-    desc: "Năng động, tò mò và thích khám phá. Luôn mang theo la bàn và sổ tay hành trình.",
+    name: "Lucas (16 ans)",
+    desc: "Dynamique, curieux et avide de découvertes. Toujours muni de sa boussole et de son carnet de bord.",
     url: "/Lucas.png",
   },
   {
     id: "chiloe",
-    name: "Chiloe (Nữ - 17 tuổi)",
-    desc: "Yêu nhiếp ảnh và văn hóa. Ghi lại mọi khoảnh khắc đẹp trong chuyến đi.",
+    name: "Chiloe (17 ans)",
+    desc: "Passionnée de photographie et de culture. Immortalise chaque beau moment de son voyage.",
     url: "/Chiloe.png",
   },
 ];
@@ -24,25 +24,22 @@ const PRESET_AVATARS = [
 const DIPLOMATIC_TITLES = [
   {
     fr: "Ambassadeur Culturel",
-    vi: "Đại sứ Văn hóa Pháp ngữ",
-    desc: "Đại diện chính thức thúc đẩy cầu nối kiến thức và phát triển.",
+    desc: "Représentant officiel chargé de promouvoir les ponts de la connaissance et du développement.",
   },
   {
     fr: "Attaché d'Espoir et d'Éducation",
-    vi: "Tự viên Giáo dục & Hy vọng",
-    desc: "Hành động thắp sáng vùng cao bằng con chữ và học bổng học đường.",
+    desc: "Agit pour éclairer les régions isolées grâce à l'éducation et aux bourses scolaires.",
   },
   {
     fr: "Gardien du Patrimoine",
-    vi: "Người bảo hộ Di sản Xanh",
-    desc: "Chuyên trách cải tạo tự nhiên, sinh thái và gìn giữ văn hiến.",
+    desc: "Spécialiste de la restauration de la nature, de l'écologie et de la préservation du patrimoine.",
   },
 ];
 
 const PASSPORT_COVERS = [
-  { color: "bg-primary text-white border-primary-container", label: "Bleu Souverain (Xanh OIF cực chất)", name: "blue" },
-  { color: "bg-secondary text-white border-red-800", label: "Rouge Impérial (Đỏ Châu Âu cổ điển)", name: "red" },
-  { color: "bg-amber-900 text-amber-100 border-amber-950", label: "Or Antique (Vàng hoàng thổ ấm áp)", name: "gold" },
+  { color: "bg-primary text-white border-primary-container", label: "Bleu OIF", name: "blue" },
+  { color: "bg-secondary text-white border-red-800", label: "Rouge Classique", name: "red" },
+  { color: "bg-amber-900 text-amber-100 border-amber-950", label: "Or Antique", name: "gold" },
 ];
 
 export default function CharacterCreator({ onComplete }: CharacterCreatorProps) {
@@ -75,12 +72,11 @@ export default function CharacterCreator({ onComplete }: CharacterCreatorProps) 
 
       setLoginMsg({
         text: isNewUser
-          ? `🎉 Chào mừng Đại sứ mới ${user.nickname}!`
-          : `👋 Chào mừng trở lại, ${user.nickname}!`,
+          ? `🎉 Bienvenue au nouvel Ambassadeur ${user.nickname} !`
+          : `👋 Bon retour, ${user.nickname} !`,
         isNew: isNewUser,
       });
 
-      // Ngắn delay để user thấy thông báo rồi vào game
       setTimeout(() => {
         onComplete({
           name: user.nickname,
@@ -94,7 +90,6 @@ export default function CharacterCreator({ onComplete }: CharacterCreatorProps) 
 
     } catch (err) {
       console.error("Login error:", err);
-      // Fallback: vẫn cho vào game nếu DB lỗi
       onComplete({
         name: name.trim(),
         avatarUrl: selectedAvatar,
@@ -109,184 +104,199 @@ export default function CharacterCreator({ onComplete }: CharacterCreatorProps) 
   };
 
   return (
-    <div className="min-h-screen bg-[#F4F1E8] flex items-center justify-center p-4 relative overflow-hidden font-body-md">
-      {/* Background Decorative Maps Texture */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <img
-          alt="Vintage Map background"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIb6KspELutfXiNZtQO-mD8-TTT_hy_M0oS92umbdRNEHPeQ8yNV4LGZkp0GK3JxYYvIwGjdfAzlwBqk1uNORcH_sdL3NMEl4QLoaVSks2M1dfHuVRd1eub9nC6Grc0OCZYYUr-oGCGtqcQ-vHzzhY5GElnie-9EKjS92_hTmLqIpAAfbw-w2KzewUsYESd_15d9W6TLAwU-kpTyESBMzL94L7pYUP8eEfE94de7ASGIo22DlSQZQCRPT0msMtKyqsiAzT-1wY2eA"
-          className="w-full h-full object-cover"
+    <div className="relative w-full h-screen bg-[#0A0A10] overflow-hidden font-body-md select-none flex items-center justify-center">
+      {/* Blurred Full-Screen Background - Replaces black bars */}
+      <img 
+        src="/main-menu-bg.png" 
+        className="absolute inset-0 w-full h-full object-cover blur-[40px] opacity-60 scale-110 pointer-events-none" 
+        alt=""
+      />
+
+      {/* Main Container - Letterboxed to 16:9 for perfect fit */}
+      <div className="relative w-full h-full max-w-[calc(100vh*16/9)] aspect-video shadow-[0_0_60px_rgba(0,0,0,0.8)] overflow-hidden flex items-center justify-center p-4 md:p-8">
+        
+        {/* Crisp Background Image Layer */}
+        <img 
+          src="/main-menu-bg.png" 
+          alt="Main Menu Background" 
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-80"
         />
-      </div>
+        <div className="absolute inset-0 bg-black/20 pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-4xl bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-gray-200 overflow-hidden flex flex-col md:flex-row">
-        {/* Left pane: Immersive Lore / Preview */}
-        <div className="md:w-5/12 bg-primary text-white p-8 flex flex-col justify-between relative overflow-hidden">
-          {/* Subtle paper patterns */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary-container via-primary to-blue-950 opacity-90 z-0"></div>
+        {/* Character Creator Form Container */}
+        <div className="relative z-10 w-full max-w-5xl h-full max-h-[85vh] bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/20 overflow-hidden flex flex-col md:flex-row">
+          
+          {/* Left pane: Immersive Lore / Preview */}
+          <div className="md:w-5/12 bg-[#0B3D91] text-white p-6 md:p-8 flex flex-col justify-between relative overflow-hidden shrink-0">
+            {/* Subtle paper patterns */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-700/50 via-blue-900 to-[#0A1A3A] opacity-90 z-0"></div>
 
-          <div className="relative z-10">
-            <div className="flex items-center gap-2 mb-4">
-              <Globe className="w-8 h-8 text-secondary-fixed animate-spin-slow" />
-              <span className="font-display-lg text-xl font-bold tracking-tight text-amber-200">GRAND VOYAGE</span>
-            </div>
-            <h1 className="font-headline-lg text-2xl font-bold mb-4 text-white leading-tight">
-              Bắt Đầu Hành Trình Pháp Ngữ Kỳ Diệu
-            </h1>
-            <p className="text-blue-100 text-sm leading-relaxed mb-6">
-              Bạn sắm vai một nhà ngoại giao, một <strong>Đại sứ du học & Hòa bình</strong> tinh tế được bổ nhiệm bởi Hiệp hội Đối ngoại OIF Quốc tế. Nhiệm vụ của bạn là dấn thân qua 10 chặng đất nước kỳ vĩ, giúp đỡ dân bản xứ vượt qua các nghịch cảnh thực tế, và ghi tên mình vào trang sử vàng du hành thương mến!
-            </p>
-          </div>
-
-          {/* Prestige Passport Preview */}
-          <div className="relative z-10 bg-blue-950/40 p-4 rounded-xl border border-blue-400/20 backdrop-blur-sm shadow-inner">
-            <h3 className="text-xs uppercase tracking-wider text-amber-300 font-bold mb-3 flex items-center gap-1">
-              <BookOpen className="w-3.5 h-3.5" /> Bản xem trước Hộ chiếu du lịch
-            </h3>
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-amber-300 bg-white/10 shrink-0">
-                <img src={selectedAvatar} alt="Ambassador preview" className="w-full h-full object-cover" />
-              </div>
+            <div className="relative z-10 flex flex-col h-full">
               <div>
-                <p className="font-headline-md text-amber-100 text-base font-bold truncate">
-                  {name || "Votre Nom / Tên của bạn"}
+                <div className="flex items-center gap-2 mb-4">
+                  <Globe className="w-8 h-8 text-[#F4B400] animate-spin-slow" />
+                  <span className="font-headline-lg text-xl font-bold tracking-tight text-[#FDF6E3]">GRAND VOYAGE</span>
+                </div>
+                <h1 className="font-headline-lg text-2xl font-bold mb-4 text-white leading-tight">
+                  Commencer le Grand Voyage Francophone
+                </h1>
+                <p className="text-blue-100/90 text-sm leading-relaxed mb-6">
+                  Vous incarnez un diplomate, un <strong>Ambassadeur de l'Éducation et de la Paix</strong> nommé par l'Organisation Internationale de la Francophonie (OIF). Votre mission est de voyager à travers 10 pays magnifiques, d'aider les populations locales à surmonter les défis réels, et d'inscrire votre nom dans l'histoire d'or du voyage !
                 </p>
-                <p className="text-secondary-fixed-dim text-xs font-semibold uppercase tracking-wider">
-                  {selectedTitle}
-                </p>
-                <div className="mt-2 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-400/20 border border-amber-400/30 text-[10px] text-amber-200 font-bold">
-                  <span>Visa: 0 / 10 Pays</span>
+              </div>
+
+              {/* Prestige Passport Preview */}
+              <div className="mt-auto">
+                <div className="bg-[#0A1A3A]/40 p-4 rounded-xl border border-blue-400/20 backdrop-blur-sm shadow-inner mb-4">
+                  <h3 className="text-[10px] uppercase tracking-widest text-[#F4B400] font-black mb-3 flex items-center gap-1.5">
+                    <BookOpen className="w-4 h-4" /> Aperçu du Passeport Diplomatique
+                  </h3>
+                  <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[#F4B400] bg-white/10 shrink-0">
+                      <img src={selectedAvatar} alt="Ambassador preview" className="w-full h-full object-cover object-top" />
+                    </div>
+                    <div className="overflow-hidden">
+                      <p className="font-headline-md text-[#FDF6E3] text-base font-bold truncate">
+                        {name || "Votre Nom"}
+                      </p>
+                      <p className="text-[#F4B400] text-[10px] font-black uppercase tracking-wider mt-0.5 truncate">
+                        {selectedTitle}
+                      </p>
+                      <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#F4B400]/20 border border-[#F4B400]/40 text-[10px] text-[#FDF6E3] font-bold">
+                        <span>Visa : 0 / 10 Pays</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="text-[11px] text-blue-200/70 italic text-center font-semibold">
+                  "Le pouvoir de la langue est un pont vers l'harmonie culturelle"
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="relative z-10 text-[11px] text-blue-200 italic mt-4 text-center">
-            "Sức mạnh ngôn ngữ là nhịp cầu hòa hợp văn hóa"
-          </div>
-        </div>
+          {/* Right pane: Customizer Form (Scrollable) */}
+          <form onSubmit={handleSubmit} className="md:w-7/12 p-6 md:p-8 flex flex-col overflow-y-auto bg-[#FDF6E3]/50">
+            <div>
+              <h2 className="font-headline-lg text-2xl text-[#0B3D91] font-bold mb-6 flex items-center gap-2">
+                <Sparkles className="text-[#F4B400] w-6 h-6 animate-pulse" /> Création du Passeport Diplomatique
+              </h2>
 
-        {/* Right pane: Customizer Form */}
-        <form onSubmit={handleSubmit} className="md:w-7/12 p-8 flex flex-col justify-between">
-          <div>
-            <h2 className="font-headline-lg text-2xl text-primary font-bold mb-6 flex items-center gap-2">
-              <Sparkles className="text-amber-500 w-6 h-6 animate-pulse" /> Thiết Lập Hồ Sơ Đại Sứ
-            </h2>
+              {/* Part 1: Diplomat name */}
+              <div className="mb-6">
+                <label className="block text-[#4A3B2C] text-sm font-bold mb-2 flex items-center gap-1.5">
+                  <User className="text-[#0B3D91] w-4 h-4" /> Nom de l'Ambassadeur :
+                </label>
+                <input
+                  type="text"
+                  required
+                  maxLength={25}
+                  placeholder="Saisissez votre nom diplomatique... (ex: Jean)"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl border-2 border-[#D4C3A3] bg-white outline-none focus:ring-4 focus:ring-[#0B3D91]/20 focus:border-[#0B3D91] transition-all text-[#4A3B2C] font-semibold"
+                />
+              </div>
 
-            {/* Part 1: Diplomat name */}
-            <div className="mb-6">
-              <label className="block text-gray-700 text-sm font-bold mb-2 flex items-center gap-1.5">
-                <User className="text-primary w-4 h-4" /> Họ và tên Đại sứ:
-              </label>
-              <input
-                type="text"
-                required
-                maxLength={25}
-                placeholder="Nhập tên ngoại giao của bạn... (Ví dụ: Xuan Quang)"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-gray-800"
-              />
-            </div>
+              {/* Part 2: Choose avatars */}
+              <div className="mb-6">
+                <span className="block text-[#4A3B2C] text-sm font-bold mb-2">Choisissez votre avatar :</span>
+                <div className="grid grid-cols-2 gap-4">
+                  {PRESET_AVATARS.map((av) => (
+                    <button
+                      key={av.id}
+                      type="button"
+                      onClick={() => { setSelectedAvatar(av.url); setSelectedAvatarId(av.id); }}
+                      className={`relative rounded-xl overflow-hidden border-2 transition-all text-left flex flex-col hover:shadow-md ${
+                        selectedAvatar === av.url ? "border-[#F4B400] ring-4 ring-[#F4B400]/20 bg-[#F4B400]/5" : "border-[#D4C3A3] bg-white hover:border-[#0B3D91]/50"
+                      }`}
+                    >
+                      <div className="w-full aspect-[4/5] overflow-hidden border-b border-[#D4C3A3]/50 bg-slate-100">
+                        <img src={av.url} alt={av.name} className="w-full h-full object-cover object-top" />
+                      </div>
+                      <div className="p-3">
+                        <h4 className="font-bold text-[#0B3D91] text-sm">{av.name}</h4>
+                        <p className="text-[10px] text-[#4A3B2C]/80 leading-relaxed mt-1 font-medium">{av.desc}</p>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-            {/* Part 2: Choose avatars */}
-            <div className="mb-6">
-              <span className="block text-gray-700 text-sm font-bold mb-2">Chọn nhân vật đại diện:</span>
-              <div className="grid grid-cols-2 gap-4">
-                {PRESET_AVATARS.map((av) => (
-                  <button
-                    key={av.id}
-                    type="button"
-                    onClick={() => { setSelectedAvatar(av.url); setSelectedAvatarId(av.id); }}
-                    className={`relative rounded-xl overflow-hidden border-2 transition-all text-left flex flex-col hover:bg-gray-50 ${
-                      selectedAvatar === av.url ? "border-amber-500 ring-2 ring-amber-400/50 bg-amber-50/40" : "border-gray-200 bg-white"
-                    }`}
-                  >
-                    <div className="w-full aspect-[4/5] overflow-hidden border-b border-gray-200 bg-slate-100">
-                      <img src={av.url} alt={av.name} className="w-full h-full object-cover object-top" />
-                    </div>
-                    <div className="p-3">
-                      <h4 className="font-bold text-gray-800 text-sm sm:text-base">{av.name}</h4>
-                      <p className="text-[11px] sm:text-xs text-gray-500 leading-snug mt-1">{av.desc}</p>
-                    </div>
-                  </button>
-                ))}
+              {/* Part 3: Choose Title */}
+              <div className="mb-6">
+                <span className="block text-[#4A3B2C] text-sm font-bold mb-2">Choisissez votre domaine diplomatique :</span>
+                <div className="space-y-3">
+                  {DIPLOMATIC_TITLES.map((t) => (
+                    <label
+                      key={t.fr}
+                      onClick={() => setSelectedTitle(t.fr)}
+                      className={`block p-3.5 rounded-xl border-2 cursor-pointer transition-all hover:shadow-sm flex items-start gap-3 ${
+                        selectedTitle === t.fr ? "border-[#0B3D91] bg-[#0B3D91]/5" : "border-[#D4C3A3] bg-white hover:border-[#0B3D91]/50"
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="diplomatic_title"
+                        checked={selectedTitle === t.fr}
+                        onChange={() => setSelectedTitle(t.fr)}
+                        className="mt-1 text-[#0B3D91] focus:ring-[#0B3D91]"
+                      />
+                      <div>
+                        <p className="font-headline-md text-sm font-bold text-[#0B3D91] mb-1">{t.fr}</p>
+                        <p className="text-[11px] text-[#4A3B2C]/80 font-medium leading-tight">{t.desc}</p>
+                      </div>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Part 4: Choose passport color theme */}
+              <div className="mb-6">
+                <span className="block text-[#4A3B2C] text-sm font-bold mb-2">Couverture du Passeport :</span>
+                <div className="flex gap-3">
+                  {PASSPORT_COVERS.map((cov) => (
+                    <button
+                      key={cov.name}
+                      type="button"
+                      onClick={() => setPassportColor(cov.name)}
+                      className={`flex-1 p-2 rounded-xl border-2 text-[10px] font-bold transition-all text-center flex flex-col sm:flex-row items-center justify-center gap-1.5 ${
+                        passportColor === cov.name
+                          ? "border-[#F4B400] ring-4 ring-[#F4B400]/20 bg-white text-[#0B3D91] shadow-sm"
+                          : "border-[#D4C3A3] bg-white/50 text-[#4A3B2C]/60 hover:bg-white"
+                      }`}
+                    >
+                      <div className={`w-4 h-4 rounded-full shadow-inner ${cov.color.split(" ")[0]}`}></div>
+                      <span>{cov.label}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Part 3: Choose Title / Sứ mệnh */}
-            <div className="mb-6">
-              <span className="block text-gray-700 text-sm font-bold mb-2">Chọn chức danh lĩnh vực đảm nhận:</span>
-              <div className="space-y-3">
-                {DIPLOMATIC_TITLES.map((t) => (
-                  <label
-                    key={t.fr}
-                    onClick={() => setSelectedTitle(t.fr)}
-                    className={`block p-3 rounded-xl border-2 cursor-pointer transition-all hover:bg-gray-50 flex items-start gap-3 ${
-                      selectedTitle === t.fr ? "border-primary bg-primary/5" : "border-gray-200"
-                    }`}
-                  >
-                    <input
-                      type="radio"
-                      name="diplomatic_title"
-                      checked={selectedTitle === t.fr}
-                      onChange={() => setSelectedTitle(t.fr)}
-                      className="mt-1 text-primary focus:ring-primary"
-                    />
-                    <div>
-                      <p className="font-headline-md text-sm font-bold text-primary">{t.fr}</p>
-                      <p className="text-[11px] text-gray-400 font-bold italic mb-1">{t.vi}</p>
-                      <p className="text-xs text-gray-600 font-medium leading-tight">{t.desc}</p>
-                    </div>
-                  </label>
-                ))}
+            {/* Login status message */}
+            {loginMsg && (
+              <div className={`mt-auto mb-4 px-4 py-3 rounded-xl text-sm font-bold text-center animate-pulse shadow-sm ${
+                loginMsg.isNew ? "bg-emerald-100 text-emerald-800 border border-emerald-300" : "bg-blue-100 text-blue-800 border border-blue-300"
+              }`}>
+                {loginMsg.text}
               </div>
-            </div>
-
-            {/* Part 4: Choose passport color theme */}
-            <div className="mb-6">
-              <span className="block text-gray-700 text-sm font-bold mb-2">Bìa sổ Hộ chiếu (Passport Cover):</span>
-              <div className="flex gap-4">
-                {PASSPORT_COVERS.map((cov) => (
-                  <button
-                    key={cov.name}
-                    type="button"
-                    onClick={() => setPassportColor(cov.name)}
-                    className={`flex-1 p-2 rounded-lg border-2 text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 ${
-                      passportColor === cov.name
-                        ? "border-amber-500 ring-2 ring-amber-300 bg-gray-50 text-gray-900 shadow-sm"
-                        : "border-gray-200 text-gray-500"
-                    }`}
-                  >
-                    <div className={`w-3.5 h-3.5 rounded-full ${cov.color.split(" ")[0]}`}></div>
-                    <span className="sr-only sm:not-sr-only text-[10px]">{cov.name.toUpperCase()}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Login status message */}
-          {loginMsg && (
-            <div className={`mb-3 px-4 py-2.5 rounded-xl text-sm font-semibold text-center animate-pulse ${
-              loginMsg.isNew ? "bg-emerald-50 text-emerald-700 border border-emerald-200" : "bg-blue-50 text-blue-700 border border-blue-200"
-            }`}>
-              {loginMsg.text}
-            </div>
-          )}
-
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="w-full bg-secondary text-white font-bold py-3.5 px-6 rounded-full hover:bg-secondary-container transition-all hover:scale-[1.02] active:scale-[0.98] shadow-md flex items-center justify-center gap-2 mt-4 cursor-pointer text-sm disabled:opacity-70 disabled:cursor-not-allowed"
-          >
-            {isLoading ? (
-              <><Globe className="w-4 h-4 animate-spin text-amber-200" /> Đang kết nối...</>
-            ) : (
-              <><Globe className="w-4 h-4 animate-spin-slow text-amber-200" /> Nhận Hộ Chiếu & Bắt Đầu Đại Hải Trình</>
             )}
-          </button>
-        </form>
+
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="mt-auto w-full bg-[#0B3D91] text-[#FDF6E3] font-bold py-4 px-6 rounded-xl hover:bg-[#1A52B8] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg flex items-center justify-center gap-2 cursor-pointer text-sm disabled:opacity-70 disabled:cursor-not-allowed border-2 border-[#F4B400]/20 hover:border-[#F4B400]"
+            >
+              {isLoading ? (
+                <><Globe className="w-5 h-5 animate-spin text-[#F4B400]" /> Connexion en cours...</>
+              ) : (
+                <><Globe className="w-5 h-5 animate-spin-slow text-[#F4B400]" /> Obtenir le Passeport & Commencer le Voyage</>
+              )}
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

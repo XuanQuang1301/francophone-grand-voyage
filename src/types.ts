@@ -18,6 +18,7 @@ export interface CountryMetadata {
   capital: string;
   language: string;
   population: string;
+  monuments: string;
   funFact: string;
   descriptionVi: string;
   descriptionFr: string;
